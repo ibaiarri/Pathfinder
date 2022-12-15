@@ -8,5 +8,5 @@ La idea es crear un programa para gestión de personajes en juegos de rol, en es
 La pagina web seria , lista todos los personajes y habrá un login y depende que tipo de usuario sea
 te renvía al back o al Front. 
 
-BACK = administrador será el único que puede borrar  personajes y reinsértalos.
-Front = los usuarios crear personajes , listar  sus  personajes , modificar su personaje y eliminar sus personajes.
+BACK = **administrador será el único que puede borrar  personajes y reinsértalos.**
+Front = **los usuarios crear personajes , listar  sus  personajes , modificar su personaje y eliminar sus personajes.**
