@@ -2,5 +2,5 @@
 
 Imagen de la informacion de la base de datos
 
-![diagrama de la base datos](/screenshots/relaciones.PNG)
+![diagrama de la base datos](../screenshots/relaciones.PNG)
 
