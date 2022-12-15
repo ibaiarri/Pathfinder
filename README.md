@@ -9,4 +9,5 @@ La pagina web seria , lista todos los personajes y habrá un login y depende que
 te renvía al back o al Front. 
 
 BACK = **administrador será el único que puede borrar  personajes y reinsértalos.**
+
 Front = **los usuarios crear personajes , listar  sus  personajes , modificar su personaje y eliminar sus personajes.**
