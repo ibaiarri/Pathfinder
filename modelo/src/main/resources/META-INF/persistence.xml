@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- configuración de la persistencia contra la bbdd -->
+
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<!-- nombre de la unidad de persistencia que usa EntityManager -->
+	<persistence-unit name="jpa_pu" transaction-type="RESOURCE_LOCAL">
+
+		<!-- clase que implementa la Api de JPA en este caso Hibernate -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		
+		<!-- Clases que van a ser persistidas contra la bbdd -->		
+		<class>com.pathfinder.model.Usuario</class>
+		<class>com.pathfinder.model.Personaje</class>
+		<class>com.pathfinder.model.Raza</class>
+		<properties>
+			<!-- propiedes de conexion de la bbdd -->
+			<property name="javax.persistence.jdbc.driver"   value="com.mysql.jdbc.Driver" />			
+			<property name="javax.persistence.jdbc.url"      value="jdbc:mysql://localhost/pathfinder" />			
+			<property name="javax.persistence.jdbc.user"     value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+
+			<!--  posibles valores:
+				validate: valide que el esquema coincida, no realice cambios en el esquema de la base de datos, probablemente lo desee para la producción.
+				update : actualiza el esquema para reflejar las entidades que se mantienen
+				create: crea el esquema necesario para sus entidades, destruyendo cualquier dato anterior.
+				create-drop : crea el esquema como en create anterior, pero también suelte el esquema al final de la sesión. Esto es genial en el desarrollo temprano o para pruebas. 
+			-->
+			
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+
+			<!-- los para mostar las sql en consola -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			
+		</properties>
+	</persistence-unit>
+</persistence>
