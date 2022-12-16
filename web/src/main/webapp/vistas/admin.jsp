@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="ServerConDatosIndex?noEmpleado=14">Utilizar operador con JavaBean</a>
-
+<h1>pagina de administrador</h1>
 </body>
 </html>
