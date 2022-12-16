@@ -12,13 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Usuario;
+
 @WebServlet("/ServerConDatosIndex")
 public class ServerConDatosIndex extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       int contabilizaradmin=0;
-       int contabilizarprod=0;
-       int contabilizarmarketing=0;
-       int contabilizardireccion=0;
+
+       
+       Usuario usu=new Usuario();
+       
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,15 +40,11 @@ public class ServerConDatosIndex extends HttpServlet {
 		String usuario = null;
 		String password=null;
 		
-		Cookie[] cookies=request.getCookies();
-		for(int i=0;i<cookies.length; i++) {
-			if(cookies[i].getName().equals("user")) {
-				usuario=cookies[i].getValue();
-			}
-			if(cookies[i].getName().equals("password")) {
-				password=cookies[i].getValue();
-			}
-		}
+
+		usu.setUsuario(request.getParameter("user"));
+		usu.setContraseña(request.getParameter("password"));
+		
+		
 		
 		if(usuario.equals("admin")||password.equals("123")) {
 	          RequestDispatcher despachador = request.getRequestDispatcher("/scripts/admin.jsp");
