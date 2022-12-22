@@ -16,6 +16,10 @@
         <link href="css/styles.css" rel="stylesheet" />
 		<script type="text/javascript" src="scripts/creartabla.js"></script>
     </head>
+		 <% 
+		
+
+		 %> 
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
