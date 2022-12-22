@@ -14,18 +14,12 @@ public class Menu {
 
 	public static void main(String[] args) throws Exception {
 		//listID();
-		//listartod();
+		listartod();
 		// eliminar();
 		//crear();
-		update();
+		//update();
 	}
 
-	
-	
-	
-	
-	
-	
 	
 	private static void crear() throws Exception {
 		PathfinderDaoImp imp = new PathfinderDaoImp();
