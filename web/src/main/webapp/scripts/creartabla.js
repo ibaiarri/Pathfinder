@@ -1,6 +1,6 @@
 function crear(){
   // Obtener la referencia del elemento body
-    var body = document.getElementsByTagName("body")[0];
+    var body = document.getElementById("tab");
 
 
   // Crea un elemento <table> y un elemento <tbody>
@@ -17,6 +17,7 @@ function crear(){
       // texto sea el contenido de <td>, ubica el elemento <td> al final
       // de la hilera de la tabla
       var celda = document.createElement("td");
+      celda.setAttribute("colspan","2");
       var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
       celda.appendChild(textoCelda);
       hilera.appendChild(celda);
