@@ -29,7 +29,6 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
-<script type="text/javascript" src="scripts/creartabla.js"></script>
 </head>
 <body>
 	<!-- Responsive navbar-->
@@ -43,11 +42,9 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<form method="get" action="ServletLectura"
-					class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<input type="text" placeholder="user" name="user"
-						th:field="*{user}"> </input> <input type="text"
-						placeholder="password" name="password" th:field="*{password}">
+				<form method="get" action="ServletLectura" class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<input type="text" placeholder="user" name="user" th:field="*{user}"> </input> 
+					<input type="text" placeholder="password" name="password" th:field="*{password}">
 					</input> <input type="submit" value="enviar" />
 				</form>
 			</div>
@@ -87,11 +84,8 @@
 							  out.println("<td>"+per.getUser().getNombre()+"</td>");			
 							  numeracion ++;
 							  out.println("</tr>"); 
-							  	  }
-	  
+						}
 					  %>
-
-
 					</tbody>
 				</table>
 
