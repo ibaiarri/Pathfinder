@@ -3,6 +3,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ page import ="com.pathfinder.dao.PathfinderDaoImp" %>
     <%@ page import ="com.pathfinder.model.Raza" %>
+    <%@ page import ="com.pathfinder.model.Usuario" %>
     
     <%@ page import="java.util.List"%>
 <!DOCTYPE html>
@@ -41,37 +42,31 @@
     
 	    PathfinderDaoImp dao=new PathfinderDaoImp();
 	    Raza r=new Raza();
-		int id=Integer.parseInt(request.getParameter("id"));
 	    
-	    List<Personaje> personajes=dao.ListPersonajeByid(id);
-	    
-	    Personaje per=new Personaje();
-	    for (Personaje personaje : personajes) {
-			per=personaje;
-		}
-	    
-		out.println("<form method='get' action='ServletUpdate' class='navbar-nav ms-auto mb-2 mb-lg-0'>");
-		out.println("<input type='hidden' name='id' value="+per.getId_personaje()+">");
-		out.println("<input type='hidden' name='id_usuario' value="+per.getUser().getId_usuario()+">");
+		out.println("<form method='get' action='ServletCrear' class='navbar-nav ms-auto mb-2 mb-lg-0'>");
+		out.println("<input type='hidden' name='id'>");
+		out.println("<input type='hidden' name='id_usuario'>");
 		out.println("Nombre");
-		out.println("<input type='text' name='nombre' value="+per.getNombre()+"><br>");
+		out.println("<input type='text' name='nombre'><br>");
 	    out.println("Nivel");
-	    out.println("<input type='text' name='nivel' value="+per.getNivel()+"><br>");
+	    out.println("<input type='text' name='nivel'><br>");
 	    out.println("Clase");
-	    out.println("<input type='text' name='clase' value="+per.getClase()+"><br>");
+	    out.println("<input type='text' name='clase'><br>");
 	    out.println("Raza");
 	    List<Raza> raza=dao.ListRaza();
 	    out.println("<select name='raza'>");
 	    for (Raza ra : raza) {
-	    	if(ra.getId_raza()==per.getRaza().getId_raza()){
-	    		out.println("<option value="+ra.getId_raza()+" selected>"+ra.getNombre()+"</option>");
-	    	}else{
-	    		out.println("<option value="+ra.getId_raza()+">"+ra.getNombre()+"</option>");
-	    	}
-	    	
+	    		out.println("<option value="+ra.getId_raza()+">"+ra.getNombre()+"</option>");	    	
 		}
 	    out.println("</select><br>");
-	    out.println("<input type='submit' value='enviar'/>");
+	    out.println("Usuario");
+	    List<Usuario> usua=dao.ListUsuario();
+	    out.println("<select name='usu'>");
+	    for (Usuario usu : usua) {
+	    		out.println("<option value="+usu.getId_usuario()+">"+usu.getNombre()+"</option>");	    	
+		}
+	    out.println("</select><br>");
+	    out.println("<input type='submit' name='crear' value='enviar'/>");
 	    out.println("</form>");
 	%>			
 

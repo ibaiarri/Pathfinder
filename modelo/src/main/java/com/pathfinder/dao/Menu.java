@@ -13,11 +13,12 @@ import com.pathfinder.model.Usuario;
 public class Menu {
 
 	public static void main(String[] args) throws Exception {
-		//listID();
-		listartod();
+//		listID();
+//		listartod();
 		// eliminar();
 		//crear();
 		//update();
+		listarRaza();
 	}
 
 	
@@ -43,7 +44,8 @@ public class Menu {
 
 	public static void listID() throws Exception {
 		PathfinderDaoImp imp = new PathfinderDaoImp();
-		List<Personaje> personajes = imp.ListPersonajeByid();
+		int id=3;
+		List<Personaje> personajes = imp.ListPersonajeByid(3);
 
 		for (Personaje personaje : personajes) {
 			System.out.print(personaje);
@@ -65,6 +67,23 @@ public class Menu {
 		
 		Personaje personaje = em.find(Personaje.class,7);
 		imp.modificarPersonaje(personaje);
+	}
+	
+	public static void listarRaza() throws Exception {
+		PathfinderDaoImp imp = new PathfinderDaoImp();
+		List<Raza> ra = imp.ListRaza();
+
+		System.out.println("Los personajes son los siguientes:");
+		System.out.println(ra);
+	}
+	
+	public static void listarUsuario() throws Exception {
+		PathfinderDaoImp imp = new PathfinderDaoImp();
+		int id=3;
+		List<Usuario> usu = imp.ListUsuarioByid(id);
+
+		System.out.println("Los usuarios son los siguientes:");
+		System.out.println(usu);
 	}
 
 }

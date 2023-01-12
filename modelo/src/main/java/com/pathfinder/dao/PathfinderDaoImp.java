@@ -31,15 +31,10 @@ public class PathfinderDaoImp implements PathfinderDao {
 		EntityManager em = emf.createEntityManager();		
 		
 		em.getTransaction().begin();		
-	
-		
-		// Update
-		p.setNombre( "DAVID ");
+
 		em.merge(p);		
 		em.getTransaction().commit();		
 		em.close();
-		
-
 
 	}
 
@@ -72,16 +67,60 @@ public class PathfinderDaoImp implements PathfinderDao {
 		return personaje;
 
 	}
+	
+	public List<Raza> ListRaza() throws Exception {
 
-	public List<Personaje> ListPersonajeByid() throws Exception {
+		final String JPQL = "SELECT r FROM Raza r";
+
+		ArrayList<Raza> raza = (ArrayList<Raza>) em.createQuery(JPQL).getResultList();
+		System.out.println();
+
+		return raza;
+
+	}
+
+	public List<Personaje> ListPersonajeByid(int id) throws Exception {
 		// TODO Auto-generated method stub
 
 		Query query = em.createNamedQuery("find Personaje by id");
-		query.setParameter("id_personaje", 3);
+		query.setParameter("id_personaje", id);
 
 		List<Personaje> personajes = query.getResultList();
 
 		return personajes;
+	}
+	
+	public List<Raza> ListRazaByid(int id) throws Exception {
+		// TODO Auto-generated method stub
+
+		Query query = em.createNamedQuery("find Raza by id");
+		query.setParameter("id_raza", id);
+
+		List<Raza> raza = query.getResultList();
+
+		return raza;
+	}
+	
+	public List<Usuario> ListUsuarioByid(int id) throws Exception {
+		// TODO Auto-generated method stub
+
+		Query query = em.createNamedQuery("find Usuario by id");
+		query.setParameter("id_usuario", id);
+
+		List<Usuario> usuario = query.getResultList();
+
+		return usuario;
+	}
+	
+	public List<Usuario> ListUsuario() throws Exception {
+
+		final String JPQL = "SELECT u FROM Usuario u";
+
+		ArrayList<Usuario> usuario = (ArrayList<Usuario>) em.createQuery(JPQL).getResultList();
+		System.out.println();
+
+		return usuario;
+
 	}
 
 }

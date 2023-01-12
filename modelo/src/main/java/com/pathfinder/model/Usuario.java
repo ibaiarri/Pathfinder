@@ -19,6 +19,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NotFound;
 
+@NamedQuery(query = "SELECT usu FROM Usuario usu WHERE usu.id_usuario = :id_usuario", name = "find Usuario by id")
 @Entity
 public class Usuario implements Serializable {
 
@@ -39,6 +40,8 @@ public class Usuario implements Serializable {
 	private String apellido;
 
 	private int tef;
+	
+	private String contraseña;
 
 
 	private int tipoUser;
@@ -52,6 +55,7 @@ public class Usuario implements Serializable {
 		this.apellido = "";
 		this.tef = 0;
 		this.tipoUser = 1;
+		this.contraseña="";
 		this.personajes = new HashSet<Personaje>();
 	}
 
@@ -121,6 +125,14 @@ public class Usuario implements Serializable {
 
 	public void setPersonajes(Set<Personaje> personajes) {
 		this.personajes = personajes;
+	}
+	
+	public String getcontraseña() {
+		return contraseña;
+	}
+
+	public void setcontraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 
 	@Override
