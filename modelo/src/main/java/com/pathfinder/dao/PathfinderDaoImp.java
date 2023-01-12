@@ -12,12 +12,14 @@ import com.pathfinder.model.Personaje;
 import com.pathfinder.model.Raza;
 import com.pathfinder.model.Usuario;
 
-public class PathfinderDaoImp implements PathfinderDao {
 
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
-	EntityManager em = emf.createEntityManager();
+public class PathfinderDaoImp implements PathfinderDao  {
+	private static PathfinderDaoImp INSTANCE=null;
+
 
 	public void createPersonaje(Personaje personaje) throws Exception {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();		
 		em.getTransaction().begin();
 
 		em.persist(personaje);
@@ -39,7 +41,8 @@ public class PathfinderDaoImp implements PathfinderDao {
 	}
 
 	public void DeletePersonaje(int id) throws Exception {
-
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();		
 		em.getTransaction().begin();
 
 		// obtener Personaje por Id
@@ -58,7 +61,8 @@ public class PathfinderDaoImp implements PathfinderDao {
 	}
 
 	public List<Personaje> ListPersonajes() throws Exception {
-
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();		
 		final String JPQL = "SELECT p FROM Personaje p";
 
 		ArrayList<Personaje> personaje = (ArrayList<Personaje>) em.createQuery(JPQL).getResultList();
@@ -81,7 +85,8 @@ public class PathfinderDaoImp implements PathfinderDao {
 
 	public List<Personaje> ListPersonajeByid(int id) throws Exception {
 		// TODO Auto-generated method stub
-
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();		
 		Query query = em.createNamedQuery("find Personaje by id");
 		query.setParameter("id_personaje", id);
 
@@ -90,6 +95,7 @@ public class PathfinderDaoImp implements PathfinderDao {
 		return personajes;
 	}
 	
+
 	public List<Raza> ListRazaByid(int id) throws Exception {
 		// TODO Auto-generated method stub
 
@@ -120,6 +126,13 @@ public class PathfinderDaoImp implements PathfinderDao {
 		System.out.println();
 
 		return usuario;
+
+
+	public  static PathfinderDaoImp getInstance() {
+		if(INSTANCE==null) {
+			INSTANCE=new PathfinderDaoImp();
+		}
+		return INSTANCE;
 
 	}
 

@@ -17,11 +17,12 @@ public interface PathfinderDao {
 	public List<Personaje> ListPersonajes() throws Exception;
 
 	public List<Personaje> ListPersonajeByid(int id) throws Exception;
-	
+
 	public List<Usuario> ListUsuario() throws Exception;
 	
 	public List<Raza> ListRaza() throws Exception;
 	
 	public List<Usuario> ListUsuarioByid(int id) throws Exception;
+
 
 }

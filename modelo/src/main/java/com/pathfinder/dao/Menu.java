@@ -44,8 +44,10 @@ public class Menu {
 
 	public static void listID() throws Exception {
 		PathfinderDaoImp imp = new PathfinderDaoImp();
+
 		int id=3;
 		List<Personaje> personajes = imp.ListPersonajeByid(3);
+
 
 		for (Personaje personaje : personajes) {
 			System.out.print(personaje);
