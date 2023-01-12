@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NotFound;
-
+@NamedQuery(query = "SELECT raz FROM Raza raz WHERE raz.id_raza = :id_raza", name = "find Raza by id")
 @Entity
 public class Raza implements Serializable {
 
