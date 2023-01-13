@@ -43,7 +43,7 @@ public class Usuario implements Serializable {
 	
 	private String contraseña;
 
-
+	//0 cuando indica 0 es usuario y 1 es administrador
 	private int tipoUser;
 	@OneToMany
 	private Set<Personaje> personajes;

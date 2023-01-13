@@ -77,9 +77,13 @@ public class ServletUpdate extends HttpServlet {
 			
 			
 			dao.modificarPersonaje(per);
-			
-			RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
-	        despachador.forward(request, response);
+			if(request.getParameter("admin") != null) {
+				RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
+		        despachador.forward(request, response);
+			}else if(request.getParameter("admin") == null)  {
+				RequestDispatcher despachador = request.getRequestDispatcher("user.jsp");
+			    despachador.forward(request, response);
+			}
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

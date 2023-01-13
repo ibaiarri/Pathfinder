@@ -48,7 +48,7 @@ public class ServletLectura extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		usu.setId_usuario(Integer.parseInt(request.getParameter("id")));
+		usu.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
 		usu.setNombre(request.getParameter("user"));
 		usu.setcontraseña(request.getParameter("password"));
 		

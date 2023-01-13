@@ -42,7 +42,8 @@
 	    PathfinderDaoImp dao=new PathfinderDaoImp();
 	    Raza r=new Raza();
 		int id=Integer.parseInt(request.getParameter("id"));
-	    
+		String ti=request.getParameter("admin");
+
 	    List<Personaje> personajes=dao.ListPersonajeByid(id);
 	    
 	    Personaje per=new Personaje();
@@ -53,6 +54,11 @@
 		out.println("<form method='get' action='ServletUpdate' class='navbar-nav ms-auto mb-2 mb-lg-0'>");
 		out.println("<input type='hidden' name='id' value="+per.getId_personaje()+">");
 		out.println("<input type='hidden' name='id_usuario' value="+per.getUser().getId_usuario()+">");
+		out.println("<input type='hidden' name='tipo' value="+per.getUser().getTipoUser()+">");
+		if(ti != null ||ti ==""){
+			out.println("<input type='hidden' name='admin' value="+ti+">");
+		}
+	
 		out.println("Nombre");
 		out.println("<input type='text' name='nombre' value="+per.getNombre()+"><br>");
 	    out.println("Nivel");

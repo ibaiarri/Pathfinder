@@ -26,7 +26,7 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-lg-5">
-                <a class="navbar-brand" href="#!">Pathfinder Administrador</a>
+                <a class="navbar-brand" href="#!">Pathfinder Usuario</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 					
@@ -55,7 +55,7 @@
 								
 			<% 
 					PathfinderDaoImp dao=new PathfinderDaoImp();	
-					int id=Integer.parseInt(request.getParameter("id"));
+					int id=Integer.parseInt(request.getParameter("id_usuario"));
 					
 					List<Personaje> personaje =dao.ListPersonajeByUsuario(id);
 
@@ -65,14 +65,15 @@
 							  session.setAttribute("persona", per);
 							  out.println("<form method='get' action='ServletEditar' class='navbar-nav ms-auto mb-2 mb-lg-0'>");
 							  out.println("<input type='hidden' name='id' value="+per.getId_personaje()+">");
+							  out.println("<input type='hidden' name='id_usuario' value="+per.getUser().getId_usuario()+">");
 							  out.println("<td>"+numeracion+"</td>");
 							  out.println("<td>"+per.getNombre()+"</td>");
 							  out.println("<td>"+per.getRaza().getNombre()+"</td>");
 							  out.println("<td>"+per.getNivel()+"</td>");
 							  out.println("<td>"+per.getClase()+"</td>");
 							  out.println("<td>"+per.getUser().getNombre()+"</td>");		
-							  out.println("<td><input type='submit' name='editar' value='editar' /></td>");	
-							  out.println("<td><input type='submit' name='eliminar' value='eliminar' /></td>");
+							  out.println("<td><input type='submit' name='editarusuario' value='editar' /></td>");	
+							  out.println("<td><input type='submit' name='eliminarusuario' value='eliminar' /></td>");
 							  out.println("</form>");	
 							  numeracion ++;
 							  out.println("</tr>"); 	  
@@ -83,7 +84,10 @@
 				
 
 				<form method="get" action="ServletCrear" class="navbar-nav ms-auto mb-2 mb-lg-0">
-					</input> <input type="submit" name='menucrear' value="crear" />
+					<% 
+						out.println("<input type='hidden' name='id_usuario' value="+id+">");
+					%>
+					</input> <input type="submit" name='menucrearusuario' value="crear" />
 				</form>
                 </div>
             </div>

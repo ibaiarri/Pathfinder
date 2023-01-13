@@ -45,6 +45,20 @@
 				<form method="get" action="ServletLectura" class="navbar-nav ms-auto mb-2 mb-lg-0">
 					<input type="text" placeholder="user" name="user" th:field="*{user}"> </input> 
 					<input type="text" placeholder="password" name="password" th:field="*{password}">
+					
+					<%
+					
+					PathfinderDaoImp dao=new PathfinderDaoImp();	
+					
+					List<Personaje> personaje =dao.ListPersonajes();
+					
+					int numeracion=1;  
+					  for(int i=0; i < personaje.size();i++){
+						  out.println("<tr>"); 
+						  Personaje per=personaje.get(i);
+						  out.println("<input type='hidden' name='id_usuario' value="+per.getUser().getId_usuario()+">");
+					  }
+					%>
 					</input> <input type="submit" value="enviar" />
 				</form>
 			</div>
@@ -68,15 +82,15 @@
 					</thead>
 					<tbody>
 						<%
-							PathfinderDaoImp dao=new PathfinderDaoImp();	
+							dao=new PathfinderDaoImp();	
 								
-							List<Personaje> personaje =dao.ListPersonajes();
+							personaje =dao.ListPersonajes();
 		
-							  int numeracion=1;  
+							  numeracion=1;  
 								  for(int i=0; i < personaje.size();i++){
 									  out.println("<tr>"); 
 									  Personaje per=personaje.get(i);
-									  out.println("<input type='hidden' name='id' value="+per.getUser().getId_usuario()+">");
+									  out.println("<input type='hidden' name='id_usuario' value="+per.getUser().getId_usuario()+">");
 									  out.println("<td>"+numeracion+"</td>");
 									  out.println("<td>"+per.getNombre()+"</td>");
 									  out.println("<td>"+per.getRaza().getNombre()+"</td>");

@@ -66,6 +66,7 @@
 							  int id=per.getId_personaje();
 							  out.println("<form method='get' action='ServletEditar' class='navbar-nav ms-auto mb-2 mb-lg-0'>");
 							  out.println("<input type='hidden' name='id' value="+per.getId_personaje()+">");
+							  out.println("<input type='hidden' name='admin' value='admin'>");
 							  out.println("<td>"+numeracion+"</td>");
 							  out.println("<td>"+per.getNombre()+"</td>");
 							  out.println("<td>"+per.getRaza().getNombre()+"</td>");
