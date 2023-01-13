@@ -1,6 +1,7 @@
 package com.pathfinder.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +17,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.pathfinder.dao.PathfinderDaoImp;
+
 @Entity // @Entity define que la entidad es persistible contra la base de datos
 
-@NamedQuery(query = "SELECT per FROM Personaje per WHERE per.id_personaje = :id_personaje", name = "find Personaje by id")
+@NamedQuery(query = "SELECT per FROM Personaje per WHERE per.id_personaje = :id_personaje  And per.disponible = 1", name = "find Personaje by id")
 
 public class Personaje implements Serializable {
 
@@ -69,11 +72,6 @@ public class Personaje implements Serializable {
 	public Personaje(String nombre) {
 		this();
 		this.nombre = nombre;
-	}
-	
-	public Personaje(int id) {
-		this();
-		this.id_personaje = id;
 	}
 
 	public Personaje(String nombre, Raza raza, int nivel, String clase, Usuario user) {
@@ -142,13 +140,23 @@ public class Personaje implements Serializable {
 		this.raza = raza;
 	}
 
+	public int getDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(int disponible) {
+		this.disponible = disponible;
+	}
+
 	@Override
 	public String toString() {
 		return "Personaje [id_personaje=" + id_personaje + ", nombre=" + nombre + ", nivel=" + nivel + ", clase="
-				+ clase + ", user=" + user + ", raza=" + raza + "]";
+				+ clase + ", user=" + user + ", raza=" + raza + ", disponible=" + disponible + "]";
 	}
 
-	
+
+
+
 	
 
 

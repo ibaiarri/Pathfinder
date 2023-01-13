@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>client</project>
-		<project>modelo</project>
 		<project>Pathfinder</project>
 	</projects>
 	<buildSpec>

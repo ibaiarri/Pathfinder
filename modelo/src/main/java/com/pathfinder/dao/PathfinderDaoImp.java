@@ -45,25 +45,20 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		EntityManager em = emf.createEntityManager();		
 		em.getTransaction().begin();
 
+		
 		// obtener Personaje por Id
-		Personaje per = em.find(Personaje.class, id);
-
-		// eliminar
-		if (per != null) {
-			em.remove(per);
-		} else {
-			System.out.println("No se puede elimiar un personaje que no existe");
-		}
-
-		em.getTransaction().commit();
+		Personaje p = em.find(Personaje.class, id);
+		p.setDisponible(0);
+		em.merge(p);		
+		em.getTransaction().commit();		
 		em.close();
-
+	
 	}
 
 	public List<Personaje> ListPersonajes() throws Exception {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();		
-		final String JPQL = "SELECT p FROM Personaje p";
+		final String JPQL =  "SELECT p FROM Personaje p where p.disponible = 1";
 
 		ArrayList<Personaje> personaje = (ArrayList<Personaje>) em.createQuery(JPQL).getResultList();
 		System.out.println();
@@ -73,7 +68,8 @@ public class PathfinderDaoImp implements PathfinderDao  {
 	}
 	
 	public List<Raza> ListRaza() throws Exception {
-
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();
 		final String JPQL = "SELECT r FROM Raza r";
 
 		ArrayList<Raza> raza = (ArrayList<Raza>) em.createQuery(JPQL).getResultList();
@@ -98,7 +94,8 @@ public class PathfinderDaoImp implements PathfinderDao  {
 
 	public List<Raza> ListRazaByid(int id) throws Exception {
 		// TODO Auto-generated method stub
-
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();
 		Query query = em.createNamedQuery("find Raza by id");
 		query.setParameter("id_raza", id);
 
@@ -109,7 +106,8 @@ public class PathfinderDaoImp implements PathfinderDao  {
 	
 	public List<Usuario> ListUsuarioByid(int id) throws Exception {
 		// TODO Auto-generated method stub
-
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();
 		Query query = em.createNamedQuery("find Usuario by id");
 		query.setParameter("id_usuario", id);
 
@@ -119,16 +117,19 @@ public class PathfinderDaoImp implements PathfinderDao  {
 	}
 	
 	public List<Usuario> ListUsuario() throws Exception {
-
-		final String JPQL = "SELECT u FROM Usuario u";
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();
+		final String JPQL = "SELECT u FROM Usuario u ";
 
 		ArrayList<Usuario> usuario = (ArrayList<Usuario>) em.createQuery(JPQL).getResultList();
 		System.out.println();
 
 		return usuario;
 
-
+	}
 	public  static PathfinderDaoImp getInstance() {
+		
+	
 		if(INSTANCE==null) {
 			INSTANCE=new PathfinderDaoImp();
 		}
