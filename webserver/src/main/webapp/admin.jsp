@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="com.pathfinder.model.Personaje"%>
+<%@page import="com.pathfinder.dao.PathfinderDaoImp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -15,6 +18,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
 		<script type="text/javascript" src="scripts/creartabla.js"></script>
+	
     </head>
       <%@ page import = "java.util.ArrayList" %>
      <%@ page import = "java.util.Arrays" %>
@@ -34,41 +38,54 @@
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center" id="tab">
                     <!--aqui introduciremos la tabla-->	
-                   <table class="table">
-					  <thead>
-					    <tr>
-					      <th scope="col">#</th>
-					      <th scope="col">Nombre</th>
-					      <th scope="col">Raza</th>
-					      <th scope="col">Nivel</th>
-					      <th scope="col">Clase</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					  <%
+              <table id="tabla"  class="table table-fixed table-condensed">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Raza</th>
+							<th scope="col">Nivel</th>
+							<th scope="col">Clase</th>
+							<th scope="col">Usuario</th>
+							<th scope="col">Editar</th>
+							<th scope="col">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+								
+			<% 
+					PathfinderDaoImp dao=new PathfinderDaoImp();	
+			
 					
-					  
-					  ArrayList<String> cities = new ArrayList<String>(
-					  Arrays.asList("L", "Tokyo", "New York"));
+					List<Personaje> personaje =dao.ListPersonajes();
 
-					  int numeracion=1;
-					  for(int i=0; i < cities.size();i++){
-					
-						  out.println("<tr>");
-						  out.println("<th scope='row'>"+numeracion+"</th>");
-						  numeracion ++;
-					
-						  
-						  for(int x=0; x < cities.size();x++){
-							  out.println("<td>"+cities.get(i)+"</td>");
-							  	  }
-						  
-						  out.println("<tr>"); 
-					  }
-					  %> 
-					  </tbody>
-					</table>
+					  int numeracion=1;  
+						  for(int i=0; i < personaje.size();i++){
+							  Personaje per=personaje.get(i);
+							  session.setAttribute("persona", per);
+							  int id=per.getId_personaje();
+							  out.println("<form method='get' action='ServletEditar' class='navbar-nav ms-auto mb-2 mb-lg-0'>");
+							  out.println("<input type='hidden' name='id' value="+per.getId_personaje()+">");
+							  out.println("<td>"+numeracion+"</td>");
+							  out.println("<td>"+per.getNombre()+"</td>");
+							  out.println("<td>"+per.getRaza().getNombre()+"</td>");
+							  out.println("<td>"+per.getNivel()+"</td>");
+							  out.println("<td>"+per.getClase()+"</td>");
+							  out.println("<td>"+per.getUser().getNombre()+"</td>");		
+							  out.println("<td><input type='submit' name='editar' value='editar' /></td>");	
+							  out.println("<td><input type='submit' name='eliminar' value='eliminar' /></td>");
+							  out.println("</form>");	
+							  numeracion ++;
+							  out.println("</tr>"); 	  
+						}		  
+					  %>
+					</tbody>
+				</table>
+				
 
+				<form method="get" action="ServletCrear" class="navbar-nav ms-auto mb-2 mb-lg-0">
+					</input> <input type="submit" name='menucrear' value="crear" />
+				</form>
                 </div>
             </div>
         </header>
@@ -78,7 +95,7 @@
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
-				 
+					<script> tablaseleccionable()</script>	 
 			       
     </body>
 </html>

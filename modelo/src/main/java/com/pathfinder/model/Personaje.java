@@ -70,6 +70,11 @@ public class Personaje implements Serializable {
 		this();
 		this.nombre = nombre;
 	}
+	
+	public Personaje(int id) {
+		this();
+		this.id_personaje = id;
+	}
 
 	public Personaje(String nombre, Raza raza, int nivel, String clase, Usuario user) {
 		this();
