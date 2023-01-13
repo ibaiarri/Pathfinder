@@ -97,7 +97,7 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		// TODO Auto-generated method stub
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();		
-		Query query = em.createNamedQuery("find Personaje by Usuario");
+		Query query = em.createNamedQuery("find Personaje by idUsuario");
 		query.setParameter("id_usuario", id);
 
 		List<Personaje> personajes = query.getResultList();
@@ -120,7 +120,7 @@ public class PathfinderDaoImp implements PathfinderDao  {
 	}
 	
 	public List<Usuario> ListUsuarioByid(int id) throws Exception {
-		// TODO Auto-generated method stub
+		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();	
 

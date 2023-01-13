@@ -1,25 +1,16 @@
 package com.pathfinder.mvc.Controler;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pathfinder.model.Personaje;
+import com.pathfinder.model.Raza;
+import com.pathfinder.model.Usuario;
 import com.pathfinder.mvc.Service.PersonajeService;
-import com.pathfinder.mvc.Service.PersonajeServiceImpl;
 
 @RestController
 @RequestMapping("/api")
@@ -35,11 +26,72 @@ public class PersonajeController {
 	 * @throws Exception 
 	 */
 	@GetMapping("/lis1")
-	public List<Personaje> index() throws Exception {
+	public List<Personaje> ListarPersonajes() throws Exception {
 		return personajeservice.listAllPersonajes();
 	}
 
 	
+	
+	
+	/**
+	 * Lista un solo personaje
+	 * 
+	 * @return personajes filtrados por una id
+	 * @throws Exception 
+	 */
+	
+	@GetMapping("/lis2")
+	public List<Personaje> ListarPersonajesPorID() throws Exception {
+		int id =3;
+		return personajeservice.listAllPersonajesporID(id);
+	}
+	
+	
+	
+
+	
+	/**
+	 * Lista todos los Usurios de la tabla
+	 * @return
+	 * @throws Exception 
+	 */
+	@GetMapping("/lis3")
+	public List<Usuario> ListarUsuarios() throws Exception {
+		return personajeservice.listUsuarios();
+	}
+	
+
+	/**
+	 * Lista todos las Razas  de la tabla
+	 * @return
+	 * @throws Exception 
+	 */
+	@GetMapping("/lis4")
+	public List<Raza> ListarRazas() throws Exception {
+		return personajeservice.listRazas();
+	}
+	
+	/**
+	 * Lista Un Usuario por id
+	 * @return
+	 * @throws Exception 
+	 */
+	@GetMapping("/lis5")
+	public List<Usuario> ListarUsuariosPorID() throws Exception {
+		int id =2;
+		return personajeservice.listUsuarioporID(id);
+	}
+	
+	/**
+	 * Lista Una Raza por id
+	 * @return
+	 * @throws Exception 
+	 */
+	@GetMapping("/lis6")
+	public List<Raza> ListarRazasPorID() throws Exception {
+		int id =1;
+		return personajeservice.listRazaporID(id);
+	}
 	/**
 	 * Lista todos los personajes de un solo jugador
 	 * 
@@ -47,14 +99,9 @@ public class PersonajeController {
 	 * @throws Exception 
 	 */
 	
-	@GetMapping("/lis2")
-	public List<Personaje> index1() throws Exception {
-		int id =3;
-		return personajeservice.listAllPersonajesporID(id);
+	@GetMapping("/lis7")
+	public List<Personaje> ListarPersonajesPorIdUsuario() throws Exception {
+		int id =2;
+		return personajeservice.listPersonajesPorIdUsuario(id);
 	}
-	
-	
-	
-	
-	
 }
