@@ -47,27 +47,39 @@ public class ServletEditar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("id"));
-		if (request.getParameter("editar") != null) {
+		if (request.getParameter("editar") != null || request.getParameter("editarusuario") != null ) {
 
 			try {
 				List<Personaje> personajes=dao.ListPersonajeByid(id);
 				
 				for (Personaje personaje : personajes) {
 					request.setAttribute("personaje",personaje);	
+					
 					RequestDispatcher despachador = request.getRequestDispatcher("formulario.jsp");
 				    despachador.forward(request, response);
 				    System.out.println(personaje.getNombre());
+					
+				
 				}
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if(request.getParameter("eliminar") != null){
+		}else if(request.getParameter("eliminar") != null || request.getParameter("eliminarusuario") != null){
 			try {
 				dao.DeletePersonaje(id);
-				RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
-		        despachador.forward(request, response);
+				
+				if (request.getParameter("eliminar") != null) {
+					RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
+			        despachador.forward(request, response);
+				}else if(request.getParameter("eliminarusuario") != null ) {
+					int usuario=Integer.parseInt(request.getParameter("id_usuario"));
+					request.setAttribute("id_usuario",usuario);
+					RequestDispatcher despachador = request.getRequestDispatcher("user.jsp");
+				    despachador.forward(request, response);
+				}
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

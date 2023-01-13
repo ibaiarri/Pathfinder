@@ -51,7 +51,12 @@ public class ServletCrear extends HttpServlet {
 
 				String clase=(request.getParameter("clase"));
 				String nombre=(request.getParameter("nombre"));
-				int usuario=Integer.parseInt(request.getParameter("usu"));
+				int usuario;
+				if(request.getParameter("id_usuario")==null) {
+					usuario=Integer.parseInt(request.getParameter("usu"));
+				}else {
+					usuario=Integer.parseInt(request.getParameter("id_usuario"));
+				}
 				int nivel=Integer.parseInt((request.getParameter("nivel")));
 				int raza=Integer.parseInt((request.getParameter("raza")));
 				System.out.println((request.getParameter("raza")));
@@ -76,13 +81,27 @@ public class ServletCrear extends HttpServlet {
 				
 				
 				dao.createPersonaje(per);
+				if(request.getParameter("id_usuario")==null) {
+					RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
+			        despachador.forward(request, response);
+				}else {
+					RequestDispatcher despachador = request.getRequestDispatcher("user.jsp");
+			        despachador.forward(request, response);
+				}
 				
-				RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
-		        despachador.forward(request, response);
+		        
+		        
+		        
+		        
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if (request.getParameter("menucrearusuario") != null){
+			int usuario=Integer.parseInt(request.getParameter("id_usuario"));
+			request.setAttribute("idusuario",usuario);
+			RequestDispatcher despachador = request.getRequestDispatcher("formulariocreador.jsp");
+		    despachador.forward(request, response);
 		}
 	}
 

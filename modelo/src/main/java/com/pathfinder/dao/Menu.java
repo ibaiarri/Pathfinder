@@ -13,8 +13,8 @@ import com.pathfinder.model.Usuario;
 public class Menu {
 
 	public static void main(String[] args) throws Exception {
-		listID();
-		//listartod();
+//		listID();
+		listartod();
 		 //eliminar();
 		//crear();
 		//update();
@@ -60,6 +60,8 @@ public class Menu {
 		System.out.println("Los personajes son los siguientes:");
 		System.out.println(per);
 	}
+	
+	
 	private static void update() throws Exception{
 		PathfinderDaoImp imp = new PathfinderDaoImp();
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");

@@ -45,7 +45,10 @@
 	    
 		out.println("<form method='get' action='ServletCrear' class='navbar-nav ms-auto mb-2 mb-lg-0'>");
 		out.println("<input type='hidden' name='id'>");
-		out.println("<input type='hidden' name='id_usuario'>");
+		
+		if(request.getParameter("id_usuario") != null){
+			out.println("<input type='hidden' name='id_usuario' value="+Integer.parseInt(request.getParameter("id_usuario"))+">");
+		}
 		out.println("Nombre");
 		out.println("<input type='text' name='nombre'><br>");
 	    out.println("Nivel");
@@ -59,13 +62,17 @@
 	    		out.println("<option value="+ra.getId_raza()+">"+ra.getNombre()+"</option>");	    	
 		}
 	    out.println("</select><br>");
-	    out.println("Usuario");
-	    List<Usuario> usua=dao.ListUsuario();
-	    out.println("<select name='usu'>");
-	    for (Usuario usu : usua) {
-	    		out.println("<option value="+usu.getId_usuario()+">"+usu.getNombre()+"</option>");	    	
-		}
-	    out.println("</select><br>");
+	    
+	    if(request.getParameter("id_usuario") == null){
+	    	out.println("Usuario");
+	  	    List<Usuario> usua=dao.ListUsuario();
+	    	out.println("<select name='usu'>");
+		    for (Usuario usu : usua) {
+		    		out.println("<option value="+usu.getId_usuario()+">"+usu.getNombre()+"</option>");	    	
+			}
+		    out.println("</select><br>");
+	    }
+	    
 	    out.println("<input type='submit' name='crear' value='enviar'/>");
 	    out.println("</form>");
 	%>			
