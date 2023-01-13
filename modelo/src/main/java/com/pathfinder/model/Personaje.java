@@ -22,7 +22,7 @@ import com.pathfinder.dao.PathfinderDaoImp;
 
 @Entity // @Entity define que la entidad es persistible contra la base de datos
 
-@NamedQuery(query = "SELECT per FROM Personaje per WHERE per.user.id_usuario = :id_usuario", name = "find Personaje by idUsuario")
+@NamedQuery(query = "SELECT per FROM Personaje per WHERE per.user.id_usuario = :id_usuario And per.disponible = 1", name = "find Personaje by idUsuario")
 @NamedQuery(query = "SELECT per FROM Personaje per WHERE per.id_personaje = :id_personaje  And per.disponible = 1", name = "find Personaje by id")
 
 public class Personaje implements Serializable {
@@ -157,7 +157,7 @@ public class Personaje implements Serializable {
 	}
 
 
-
+	
 
 	
 
