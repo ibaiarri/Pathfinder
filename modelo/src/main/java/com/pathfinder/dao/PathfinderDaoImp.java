@@ -120,7 +120,7 @@ public class PathfinderDaoImp implements PathfinderDao  {
 	}
 	
 	public List<Usuario> ListUsuarioByid(int id) throws Exception {
-		// TODO Auto-generated method stub
+		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();	
 
