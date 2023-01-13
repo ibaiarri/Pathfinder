@@ -18,6 +18,8 @@ import javax.validation.constraints.Size;
 
 @Entity // @Entity define que la entidad es persistible contra la base de datos
 
+
+@NamedQuery(query = "SELECT per FROM Personaje per WHERE per.user.id_usuario = :id_usuario", name = "find Personaje by idUsuario")
 @NamedQuery(query = "SELECT per FROM Personaje per WHERE per.id_personaje = :id_personaje", name = "find Personaje by id")
 
 public class Personaje implements Serializable {
@@ -27,6 +29,7 @@ public class Personaje implements Serializable {
 	@Id
 	@GeneratedValue
 	private int id_personaje;
+	
 
 	@NotEmpty
 	@Size(min = 2, max = 20, message = "El nombre del personaje debe  estar entre 2 y 20 caracteres")
@@ -147,6 +150,8 @@ public class Personaje implements Serializable {
 		return "Personaje [id_personaje=" + id_personaje + ", nombre=" + nombre + ", nivel=" + nivel + ", clase="
 				+ clase + ", user=" + user + ", raza=" + raza + "]";
 	}
+	
+	
 
 	
 	

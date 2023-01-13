@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pathfinder.dao.PathfinderDaoImp;
+import com.pathfinder.model.Usuario;
 
-import model.Usuario;
 
 @WebServlet("/ServletLectura")
 public class ServletLectura extends HttpServlet {
@@ -48,9 +48,9 @@ public class ServletLectura extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		usu.setUsuario(request.getParameter("user"));
-		usu.setContraseña(request.getParameter("password"));
+		usu.setId_usuario(Integer.parseInt(request.getParameter("id")));
+		usu.setNombre(request.getParameter("user"));
+		usu.setcontraseña(request.getParameter("password"));
 		
 		request.setAttribute("usuario",usu);
 		
@@ -58,12 +58,12 @@ public class ServletLectura extends HttpServlet {
 		for(int i=0; i < usuario.size();i++){
 			 com.pathfinder.model.Usuario usua=usuario.get(i);
 		
-			if(usu.getUsuario().equals(usua.getNombre())&&usu.getContraseña().equals(usua.getcontraseña())) {
+			if(usu.getNombre().equals(usua.getNombre())&& usu.getcontraseña().equals(usua.getcontraseña())) {
 				
 				if (usua.getTipoUser()==1) {
 					RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
 			        despachador.forward(request, response);
-				}else {
+				}else if (usua.getTipoUser()==0){
 					RequestDispatcher despachador = request.getRequestDispatcher("user.jsp");
 			        despachador.forward(request, response);
 				}

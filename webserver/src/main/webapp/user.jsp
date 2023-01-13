@@ -55,15 +55,14 @@
 								
 			<% 
 					PathfinderDaoImp dao=new PathfinderDaoImp();	
-			
+					int id=Integer.parseInt(request.getParameter("id"));
 					
-					List<Personaje> personaje =dao.ListPersonajes();
+					List<Personaje> personaje =dao.ListPersonajeByUsuario(id);
 
 					  int numeracion=1;  
 						  for(int i=0; i < personaje.size();i++){
 							  Personaje per=personaje.get(i);
 							  session.setAttribute("persona", per);
-							  int id=per.getId_personaje();
 							  out.println("<form method='get' action='ServletEditar' class='navbar-nav ms-auto mb-2 mb-lg-0'>");
 							  out.println("<input type='hidden' name='id' value="+per.getId_personaje()+">");
 							  out.println("<td>"+numeracion+"</td>");
