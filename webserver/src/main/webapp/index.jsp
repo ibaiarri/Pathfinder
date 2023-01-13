@@ -68,22 +68,23 @@
 					</thead>
 					<tbody>
 						<%
-					PathfinderDaoImp dao=new PathfinderDaoImp();	
-						
-					List<Personaje> personaje =dao.ListPersonajes();
-
-					  int numeracion=1;  
-						  for(int i=0; i < personaje.size();i++){
-							  out.println("<tr>"); 
-							  Personaje per=personaje.get(i);
-							  out.println("<td>"+numeracion+"</td>");
-							  out.println("<td>"+per.getNombre()+"</td>");
-							  out.println("<td>"+per.getRaza().getNombre()+"</td>");
-							  out.println("<td>"+per.getNivel()+"</td>");
-							  out.println("<td>"+per.getClase()+"</td>");
-							  out.println("<td>"+per.getUser().getNombre()+"</td>");			
-							  numeracion ++;
-							  out.println("</tr>"); 
+							PathfinderDaoImp dao=new PathfinderDaoImp();	
+								
+							List<Personaje> personaje =dao.ListPersonajes();
+		
+							  int numeracion=1;  
+								  for(int i=0; i < personaje.size();i++){
+									  out.println("<tr>"); 
+									  Personaje per=personaje.get(i);
+									  out.println("<input type='hidden' name='id' value="+per.getUser().getId_usuario()+">");
+									  out.println("<td>"+numeracion+"</td>");
+									  out.println("<td>"+per.getNombre()+"</td>");
+									  out.println("<td>"+per.getRaza().getNombre()+"</td>");
+									  out.println("<td>"+per.getNivel()+"</td>");
+									  out.println("<td>"+per.getClase()+"</td>");
+									  out.println("<td>"+per.getUser().getNombre()+"</td>");			
+									  numeracion ++;
+									  out.println("</tr>"); 
 						}
 					  %>
 					</tbody>

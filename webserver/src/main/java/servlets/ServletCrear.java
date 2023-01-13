@@ -76,6 +76,9 @@ public class ServletCrear extends HttpServlet {
 				
 				
 				dao.createPersonaje(per);
+				
+				RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
+		        despachador.forward(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
