@@ -25,6 +25,7 @@ public class PersonajeController {
 	 * @return
 	 * @throws Exception 
 	 */
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis1")
 	public List<Personaje> ListarPersonajes() throws Exception {
 		return personajeservice.listAllPersonajes();
