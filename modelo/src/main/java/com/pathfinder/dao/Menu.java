@@ -13,9 +13,10 @@ import com.pathfinder.model.Usuario;
 public class Menu {
 
 	public static void main(String[] args) throws Exception {
-//		listID();
+
+		//listID();
 		listartod();
-		 //eliminar();
+		// eliminar();
 		//crear();
 		//update();
 		//listarRaza();
@@ -38,7 +39,7 @@ public class Menu {
 
 	private static void eliminar() throws Exception {
 		PathfinderDaoImp imp = new PathfinderDaoImp();
-		imp.DeletePersonaje(4);
+		imp.DeletePersonaje(3);
 
 	}
 

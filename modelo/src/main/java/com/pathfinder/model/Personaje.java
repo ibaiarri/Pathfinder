@@ -163,7 +163,7 @@ public class Personaje implements Serializable {
 	}
 
 
-
+	
 
 	
 
