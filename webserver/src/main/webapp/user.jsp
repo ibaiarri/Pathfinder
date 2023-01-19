@@ -90,6 +90,9 @@
 					</input> <input type="submit" name='menucrearusuario' value="crear" />
 				</form>
                 </div>
+                <form method="get" action="/webserver">
+				 <button type="submit">inicio
+				</form>
             </div>
         </header>
                   <!--aqui introduciremos la imagen-->	

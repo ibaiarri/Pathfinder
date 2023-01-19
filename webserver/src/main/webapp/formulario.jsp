@@ -79,10 +79,14 @@
 	    out.println("</select><br>");
 	    out.println("<input type='submit' value='enviar'/>");
 	    out.println("</form>");
+	    
+	   
 	%>			
-
+ 					
                 </div>
-            </div>
+                <form method="get" action="/webserver">
+				 <button type="submit">inicio
+				</form>
         </header>
                   <!--aqui introduciremos la imagen-->	
                     <img src="imagen/Pathfinder.jpeg">

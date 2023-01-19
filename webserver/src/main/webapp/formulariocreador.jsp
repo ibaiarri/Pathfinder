@@ -78,7 +78,11 @@
 	%>			
 
                 </div>
+                 <form method="get" action="/webserver">
+				 <button type="submit">inicio
+				</form>
             </div>
+           
         </header>
                   <!--aqui introduciremos la imagen-->	
                     <img src="imagen/Pathfinder.jpeg">

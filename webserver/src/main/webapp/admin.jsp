@@ -80,6 +80,7 @@
 							  out.println("</tr>"); 	  
 						}		  
 					  %>
+					  
 					</tbody>
 				</table>
 				
@@ -87,8 +88,13 @@
 				<form method="get" action="ServletCrear" class="navbar-nav ms-auto mb-2 mb-lg-0">
 					</input> <input type="submit" name='menucrear' value="crear" />
 				</form>
+				
                 </div>
+                <form method="get" action="/webserver">
+				 <button type="submit">inicio
+				</form>
             </div>
+           
         </header>
                   <!--aqui introduciremos la imagen-->	
                     <img src="imagen/Pathfinder.jpeg">

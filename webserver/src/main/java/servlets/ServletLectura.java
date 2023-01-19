@@ -37,7 +37,7 @@ public class ServletLectura extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		boolean comprobar = false;
 		
 		PathfinderDaoImp dao=new PathfinderDaoImp();	
 		
@@ -59,7 +59,7 @@ public class ServletLectura extends HttpServlet {
 			 com.pathfinder.model.Usuario usua=usuario.get(i);
 		
 			if(usu.getNombre().equals(usua.getNombre())&& usu.getcontraseña().equals(usua.getcontraseña())) {
-				
+				comprobar=true;
 				if (usua.getTipoUser()==1) {
 					RequestDispatcher despachador = request.getRequestDispatcher("admin.jsp");
 			        despachador.forward(request, response);
@@ -71,10 +71,21 @@ public class ServletLectura extends HttpServlet {
 		        
 			}else { 
 				
-				//aqui debermeos indicar una pagina de error en la que se indique que los datos no se han encontrado tegno ejemplos en el pc del trabajo
-				
+			
+		
 			}
 		
+		}
+		if(comprobar==false) {
+			//aqui debermeos indicar una pagina de error en la que se indique que los datos no se han encontrado tegno ejemplos en el pc del trabajo
+			PrintWriter salida=response.getWriter();
+			
+			salida.println("<html><body>");
+			salida.println("<p>El usuario introducido no existe</p>");
+			salida.println("<form method='get' action='/webserver'>");
+			salida.println("<button type='submit'>inicio");
+			salida.println("</form>");
+			salida.println("</body></html>");
 		}
 
 	}

@@ -40,7 +40,7 @@ public class PersonajeController {
 	 * @return personajes filtrados por una id
 	 * @throws Exception 
 	 */
-	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis2")
 	public List<Personaje> ListarPersonajesPorID() throws Exception {
 		int id =3;
@@ -56,6 +56,7 @@ public class PersonajeController {
 	 * @return
 	 * @throws Exception 
 	 */
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis3")
 	public List<Usuario> ListarUsuarios() throws Exception {
 		return personajeservice.listUsuarios();
@@ -67,6 +68,7 @@ public class PersonajeController {
 	 * @return
 	 * @throws Exception 
 	 */
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis4")
 	public List<Raza> ListarRazas() throws Exception {
 		return personajeservice.listRazas();
@@ -77,6 +79,7 @@ public class PersonajeController {
 	 * @return
 	 * @throws Exception 
 	 */
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis5")
 	public List<Usuario> ListarUsuariosPorID() throws Exception {
 		int id =2;
@@ -88,6 +91,7 @@ public class PersonajeController {
 	 * @return
 	 * @throws Exception 
 	 */
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis6")
 	public List<Raza> ListarRazasPorID() throws Exception {
 		int id =1;
@@ -99,7 +103,7 @@ public class PersonajeController {
 	 * @return personajes filtrados por una id
 	 * @throws Exception 
 	 */
-	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis7")
 	public List<Personaje> ListarPersonajesPorIdUsuario() throws Exception {
 		int id =2;
