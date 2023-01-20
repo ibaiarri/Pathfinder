@@ -44,7 +44,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<form method="get" action="ServletLectura" class="navbar-nav ms-auto mb-2 mb-lg-0">
 					<input type="text" placeholder="user" name="user" th:field="*{user}"> </input> 
-					<input type="text" placeholder="password" name="password" th:field="*{password}">
+					<input type="password" placeholder="password" name="password" th:field="*{password}">
 					
 					<%
 					
