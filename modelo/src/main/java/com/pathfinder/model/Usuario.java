@@ -19,6 +19,9 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NotFound;
 
+
+
+@NamedQuery(query = "SELECT usu FROM Usuario usu WHERE usu.nombre = :nombre", name = "find Usuario by name")
 @NamedQuery(query = "SELECT usu FROM Usuario usu WHERE usu.id_usuario = :id_usuario", name = "find Usuario by id")
 @Entity
 public class Usuario implements Serializable {

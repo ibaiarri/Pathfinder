@@ -105,8 +105,22 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		return personajes;
 	}
 	
+	
+	public int UsuarioFilterByName(String nombre) throws Exception {
+		// TODO Auto-generated method stub
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
+		EntityManager em = emf.createEntityManager();		
+		Query query = em.createNamedQuery("find Usuario by name");
+		query.setParameter("nombre", nombre);
 
-	public List<Raza> ListRazaByid(int id) throws Exception {
+		Usuario usuario = (Usuario) query.getSingleResult();
+		int id=usuario.getId_usuario();
+
+		return id;
+	}
+	
+
+	public Raza ListRazaByid(int id) throws Exception {
 		// TODO Auto-generated method stub
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();
@@ -114,12 +128,12 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		Query query = em.createNamedQuery("find Raza by id");
 		query.setParameter("id_raza", id);
 
-		List<Raza> raza = query.getResultList();
+		Raza raza = (Raza) query.getSingleResult();
 
 		return raza;
 	}
 	
-	public List<Usuario> ListUsuarioByid(int id) throws Exception {
+	public Usuario ListUsuarioByid(int id) throws Exception {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();	
@@ -127,7 +141,7 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		Query query = em.createNamedQuery("find Usuario by id");
 		query.setParameter("id_usuario", id);
 
-		List<Usuario> usuario = query.getResultList();
+		Usuario usuario = (Usuario) query.getSingleResult();
 
 		return usuario;
 	}

@@ -59,21 +59,20 @@ public class ServletCrear extends HttpServlet {
 				}
 				int nivel=Integer.parseInt((request.getParameter("nivel")));
 				int raza=Integer.parseInt((request.getParameter("raza")));
-				System.out.println((request.getParameter("raza")));
 				
 				Personaje per=new Personaje();
 				per.setNombre(nombre);
 				per.setClase(clase);
 				per.setNivel(nivel);
 				
-				List<Usuario> usu=dao.ListUsuarioByid(usuario);
-				for (Usuario u : usu) {
-					per.setUser(u);
-				}
-				List<Raza> raz=dao.ListRazaByid(raza);
-				for (Raza ra : raz) {
-					per.setRaza(ra);
-				}
+				Usuario usu=dao.ListUsuarioByid(usuario);
+				
+				per.setUser(usu);
+				
+				Raza raz=dao.ListRazaByid(raza);
+			
+				per.setRaza(raz);
+
 		//		List<Usuario> usu=dao.ListUsuarioByid(raza);
 		//		for (Raza ra : raz) {
 		//			per.setRaza(ra);

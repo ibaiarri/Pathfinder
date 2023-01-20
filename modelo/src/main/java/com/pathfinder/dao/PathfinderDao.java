@@ -22,7 +22,11 @@ public interface PathfinderDao {
 	
 	public List<Raza> ListRaza() throws Exception;
 	
-	public List<Usuario> ListUsuarioByid(int id) throws Exception;
+	public Usuario ListUsuarioByid(int id) throws Exception;
+	
+	public int UsuarioFilterByName(String nombre) throws Exception;
+	
+	public Raza ListRazaByid(int id) throws Exception;
 
 
 }

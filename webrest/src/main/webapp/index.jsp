@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table border=1>
 		<thead>
 			<tr>
 				<th>ID</th>	

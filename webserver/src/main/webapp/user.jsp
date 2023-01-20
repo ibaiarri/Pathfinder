@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="com.pathfinder.model.Personaje"%>
+<%@page import="com.pathfinder.model.Usuario"%>
 <%@page import="com.pathfinder.dao.PathfinderDaoImp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -54,8 +55,9 @@
 					<tbody>
 								
 			<% 
+			 		Usuario usu =(Usuario) session.getAttribute("usuario");
 					PathfinderDaoImp dao=new PathfinderDaoImp();	
-					int id=Integer.parseInt(request.getParameter("id_usuario"));
+					int id=usu.getId_usuario();
 					
 					List<Personaje> personaje =dao.ListPersonajeByUsuario(id);
 

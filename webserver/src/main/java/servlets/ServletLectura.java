@@ -12,6 +12,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pathfinder.dao.PathfinderDaoImp;
 import com.pathfinder.model.Usuario;
@@ -48,11 +49,27 @@ public class ServletLectura extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		usu.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+		
+		int id;
+		try {
+			id = dao.UsuarioFilterByName(request.getParameter("user"));
+			usu.setId_usuario(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		usu.setNombre(request.getParameter("user"));
 		usu.setcontraseña(request.getParameter("password"));
 		
-		request.setAttribute("usuario",usu);
+		
+
+
+		    HttpSession sesion = request.getSession(true);
+		   
+
+		   
+		    sesion.setAttribute("usuario",usu);
 		
 		
 		for(int i=0; i < usuario.size();i++){
@@ -69,10 +86,6 @@ public class ServletLectura extends HttpServlet {
 				}
 		        
 		        
-			}else { 
-				
-			
-		
 			}
 		
 		}
