@@ -21,13 +21,13 @@ public class PersonajeServiceImpl implements PersonajeService {
 	}
 
 	@Override
-	public List<Personaje> listAllPersonajesporID(int id) throws Exception {
+	public Personaje listAllPersonajesporID(int id) throws Exception {
 		pathDao =PathfinderDaoImp.getInstance();
 		return pathDao.ListPersonajeByid(id);
 	}
 	
 	@Override
-	public List<Personaje> listPersonajesPorIdUsuario(int id) throws Exception {
+	public Personaje listPersonajesPorIdUsuario(int id) throws Exception {
 		pathDao =PathfinderDaoImp.getInstance();
 		return pathDao.ListPersonajeByUsuario(id);
 	}
@@ -45,13 +45,13 @@ public class PersonajeServiceImpl implements PersonajeService {
 	}
 
 	@Override
-	public List<Usuario> listUsuarioporID(int id) throws Exception {
+	public Usuario listUsuarioporID(int id) throws Exception {
 		pathDao =PathfinderDaoImp.getInstance();
 		return pathDao.ListUsuarioByid(id);
 	}
 
 	@Override
-	public List<Raza> listRazaporID(int id) throws Exception {
+	public Raza listRazaporID(int id) throws Exception {
 		pathDao =PathfinderDaoImp.getInstance();
 		return pathDao.ListRazaByid(id);
 	}

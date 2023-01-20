@@ -42,7 +42,7 @@ public class PersonajeController {
 	 */
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis2")
-	public List<Personaje> ListarPersonajesPorID() throws Exception {
+	public Personaje ListarPersonajesPorID() throws Exception {
 		int id =3;
 		return personajeservice.listAllPersonajesporID(id);
 	}
@@ -81,7 +81,7 @@ public class PersonajeController {
 	 */
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis5")
-	public List<Usuario> ListarUsuariosPorID() throws Exception {
+	public Usuario ListarUsuariosPorID() throws Exception {
 		int id =2;
 		return personajeservice.listUsuarioporID(id);
 	}
@@ -93,7 +93,7 @@ public class PersonajeController {
 	 */
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis6")
-	public List<Raza> ListarRazasPorID() throws Exception {
+	public Raza ListarRazasPorID() throws Exception {
 		int id =1;
 		return personajeservice.listRazaporID(id);
 	}
@@ -105,7 +105,7 @@ public class PersonajeController {
 	 */
 	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/lis7")
-	public List<Personaje> ListarPersonajesPorIdUsuario() throws Exception {
+	public Personaje ListarPersonajesPorIdUsuario() throws Exception {
 		int id =2;
 		return personajeservice.listPersonajesPorIdUsuario(id);
 	}
