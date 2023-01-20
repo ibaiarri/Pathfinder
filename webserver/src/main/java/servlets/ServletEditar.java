@@ -57,7 +57,6 @@ public class ServletEditar extends HttpServlet {
 					
 					RequestDispatcher despachador = request.getRequestDispatcher("formulario.jsp");
 				    despachador.forward(request, response);
-				    System.out.println(personaje.getNombre());
 					
 				
 				}
