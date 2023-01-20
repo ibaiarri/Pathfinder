@@ -16,6 +16,11 @@ import com.pathfinder.model.Usuario;
 public class PathfinderDaoImp implements PathfinderDao  {
 	private static PathfinderDaoImp INSTANCE=null;
 
+	/**
+	 * Cargamos los datos obtenidos del objeto personaje en la db
+	 */
+
+
 
 	public void createPersonaje(Personaje personaje) throws Exception {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
@@ -27,7 +32,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		em.getTransaction().commit();
 
 	}
-
+	/**
+	 * modificamos la db con los datos obtenidos del objeto personaje
+	 */
+	
 	public void modificarPersonaje(Personaje p) throws Exception {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();		
@@ -39,7 +47,11 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		em.close();
 
 	}
-
+	/**
+	 * Hace un borrado lógico de la fila personaje seleccionado  
+	 * modificando el campo disponible de la base de datos a 0
+	 * 
+	 */
 	public void DeletePersonaje(int id) throws Exception {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();		
@@ -54,7 +66,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		em.close();
 	
 	}
-
+	
+	/**
+	 * Lista los diferentes personajes obtenidos de la base de datos
+	 */
 	public List<Personaje> ListPersonajes() throws Exception {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();		
@@ -66,6 +81,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		return personaje;
 
 	}
+	
+	/**
+	 * Lista las diferentes razas obtenidas de la base de datos
+	 */
 	
 	public List<Raza> ListRaza() throws Exception {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
@@ -79,6 +98,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		return raza;
 
 	}
+	
+	/**
+	 * Lista los diferentes personajes obtenidos de la base de datos filtrando por id
+	 */
 
 	public List<Personaje> ListPersonajeByid(int id) throws Exception {
 		// TODO Auto-generated method stub
@@ -93,6 +116,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 	}
 	
 	
+	/**
+	 * Lista los diferentes personajes obtenidos de la base de datos filtrando por id el id del Usuario
+	 */
+	
 	public List<Personaje> ListPersonajeByUsuario(int id) throws Exception {
 		// TODO Auto-generated method stub
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
@@ -104,6 +131,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 
 		return personajes;
 	}
+	
+	/**
+	 * Lista los diferentes Usuarios obtenidos de la base de datos filtrando por nombre del usuario
+	 */
 	
 	
 	public int UsuarioFilterByName(String nombre) throws Exception {
@@ -119,6 +150,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		return id;
 	}
 	
+	/**
+	 * Lista las diferentes razas obtenidas de la base de datos filtrando por el id
+	 */
+	
 
 	public Raza ListRazaByid(int id) throws Exception {
 		// TODO Auto-generated method stub
@@ -133,6 +168,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		return raza;
 	}
 	
+	/**
+	 * Lista los diferentes Usuarios obtenidos de la base de datos filtrando por id
+	 */
+	
 	public Usuario ListUsuarioByid(int id) throws Exception {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
@@ -146,6 +185,10 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		return usuario;
 	}
 	
+	/**
+	 * Lista los diferentes Usuarios obtenidos de la base de datos 
+	 */
+	
 	public List<Usuario> ListUsuario() throws Exception {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_pu");
 		EntityManager em = emf.createEntityManager();
@@ -157,6 +200,11 @@ public class PathfinderDaoImp implements PathfinderDao  {
 		return usuario;
 	}
 
+	/**
+	 * Aqui se instancia la implementacion del dao
+	 */
+	
+	
 	public  static PathfinderDaoImp getInstance() {
 		
 	
