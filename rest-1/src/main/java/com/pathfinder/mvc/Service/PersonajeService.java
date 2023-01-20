@@ -9,9 +9,9 @@ import com.pathfinder.model.Usuario;
 public interface PersonajeService {
 	public abstract List<Personaje> listAllPersonajes() throws Exception;
 
-	public abstract Personaje listAllPersonajesporID(int id) throws Exception;
+	public abstract List<Personaje> listAllPersonajesporID(int id) throws Exception;
 	
-	public abstract Personaje listPersonajesPorIdUsuario(int id) throws Exception;
+	public abstract List <Personaje> listPersonajesPorIdUsuario(int id) throws Exception;
 	
 	public abstract List<Usuario> listUsuarios() throws Exception;
 	
